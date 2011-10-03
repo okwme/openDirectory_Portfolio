@@ -1,0 +1,18 @@
+	body { 
+		padding: 20px;
+		font-family: "Lucida Grande" !important;
+		font-size: 12px;
+		}
+		a { color: blue; text-decoration: none; }
+		
+			a:hover { color: red; }
+		
+		table { width: 450px; }
+		#upload {
+			border: 1px solid #DDD;
+			padding: 10px 20px;
+			width: 300px;
+			position: absolute;
+			top: 40px;
+			left: 500px;
+			}

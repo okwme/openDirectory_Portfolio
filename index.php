@@ -42,6 +42,8 @@
 	<html>
 	
 		<head>
+	<link rel="stylesheet" type="text/css" href="styles.css" />
+	<script src="jquery-1.5.js"></script>
 			
 			<title>Artist Name</title>
 

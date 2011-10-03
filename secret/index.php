@@ -43,7 +43,7 @@ if ($_FILES['file'] && stripslashes($_REQUEST['pw']) == $password) {
 	$ext = strtolower(substr($_FILES['file']['name'], strrpos($_FILES['file']['name'], '.')+1));
 	if ($_REQUEST['order'] != "")
 	{
-		$success = move_uploaded_file($_FILES['file']['tmp_name'], stripslashes($_REQUEST['order'])."_".str_replace("'","",stripslashes($_REQUEST['title']))."_".stripslashes($_REQUEST['side']).".".$ext);
+		$success = move_uploaded_file($_FILES['file']['tmp_name'], stripslashes($_REQUEST['order'])."_".preg_replace("/[^a-zA-Z0-9]/", "-", $_REQUEST['title'])."_".strtolower(stripslashes($_REQUEST['side'])).".".$ext);
 	}
 	else
 	{
@@ -75,8 +75,8 @@ $files = @array_reverse($files);
 	<head>
 
 	<title>Secret Stuff</title>
-	<link rel="stylesheet" type="text/css" href="styles.css" />
-	<script src="./jquery-1.5.js"></script>
+	<link rel="stylesheet" type="text/css" href="../styles.css" />
+	<script src="../jquery-1.5.js"></script>
 <script type="text/javascript">
 	function deleteFile(filename)
 {
@@ -96,7 +96,9 @@ function checkForm()
 	var thisext = file.val().substr(file.val().lastIndexOf('.'));
 	if (thisext == ".jpg" || thisext == ".jpeg" || thisext == ".gif" || thisext == ".png" )
 	{
-		if (side.val() != "l" && side.val() != "r" && side.val() != "c")
+		console.log(side.val());
+console.log(side.val().toLowerCase());
+		if (side.val().toLowerCase() != "l" && side.val().toLowerCase() != "r" && side.val().toLowerCase() != "c")
 		{
 			side.css("background","red");
 			alert('you fucked up side');
@@ -123,10 +125,13 @@ function checkForm()
 	{
 		return true;
 	}
+
+return false;
 }
 </script>			
 	</head>	
 	<body>
+<a href="..">HOME</a><br>
 	<?php $baseurl = $_SERVER['PHP_SELF']; ?>
 <table border="0" cellspacing="5" cellpadding="5">
 	<?php
@@ -152,11 +157,11 @@ for ($i=0; $i<$arsize; $i++) {
 
 		<div id="upload">
 		<form method="post" onSubmit="return checkForm();" action="<?php echo $_SERVER['PHP_SELF'];?>" enctype="multipart/form-data">
-	<p><input type="text" id="side" name="side"></input> L, R, or C</p>
-		<p><input type="text" id="order" name="order"></input> order</p>
-		<p><input type="text" id="title" name="title"></input> title</p>
-		<p><input type="text" id="pw" name="pw" value="<?php echo stripslashes($_REQUEST['pw']) ?>"></input> password</p>
-	<p><input type="file" id="file" name="file" /></p>
+	<p><input type="text" autocomplete="off" id="side" name="side"></input> L, R, or C</p>
+		<p><input type="text" autocomplete="off" id="order" name="order"></input> order</p>
+		<p><input type="text" autocomplete="off" id="title" name="title"></input> title</p>
+		<p><input type="text" autocomplete="off" id="pw" name="pw" value="<?php echo stripslashes($_REQUEST['pw']) ?>"></input> password</p>
+	<p><input type="file" autocomplete="off" id="file" name="file" /></p>
 		<p><input type="submit" value="Upload" /></p>
 		</form>
 
