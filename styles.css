@@ -1,12 +1,21 @@
 	body { 
 		padding: 20px;
-		font-family: "Lucida Grande" !important;
-		font-size: 12px;
+		font-family: "Helvetica" !important;
+		font-size: 14px;
 		}
-		a { color: blue; text-decoration: none; }
+		a { color: black; text-decoration: none; }
 		
-			a:hover { color: red; }
-		
+			a:hover { color: black; }
+			a:visited {color: black;}
+		#header{
+			position:fixed;
+			margin-bottom:160px;
+			top:20px;
+			left:20px;
+		}
+		.titles{
+opacity:0;
+		}
 		table { width: 450px; }
 		#upload {
 			border: 1px solid #DDD;
