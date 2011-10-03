@@ -1,6 +1,6 @@
 <?php
 
-
+//secret
 
 
 $hide = array(	'resources',
@@ -38,16 +38,19 @@ if (isset($_GET['rmfile']) && (stripslashes($_REQUEST['pw']) == $password)) {
 	unlink($readpath . $_GET['rmfile']);
 }
 
+//allowed extensions
+$exts = array("jpg","jpeg","gif","png","bmp","pdf");
+
 //UPLOAD
 if ($_FILES['file'] && stripslashes($_REQUEST['pw']) == $password) {
 	$ext = strtolower(substr($_FILES['file']['name'], strrpos($_FILES['file']['name'], '.')+1));
-	if ($_REQUEST['order'] != "")
+	if ($_REQUEST['order'] != ""&&in_array(strtolower($ext),$exts))
 	{
 		$success = move_uploaded_file($_FILES['file']['tmp_name'], stripslashes($_REQUEST['order'])."_".preg_replace("/[^a-zA-Z0-9]/", "-", $_REQUEST['title'])."_".strtolower(stripslashes($_REQUEST['side'])).".".$ext);
 	}
 	else
 	{
-		$success = move_uploaded_file($_FILES['file']['tmp_name'], str_replace("'","",stripslashes($_FILES['file']['name'])));
+		echo "<h1>NOPE</h1>";
 	}
 }
 
