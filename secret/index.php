@@ -4,6 +4,7 @@
 
 
 $hide = array(	'resources',
+	'styles.css',
 	'index.php',
 	'.htaccess',
 	'.htpasswd',
@@ -29,11 +30,11 @@ $scriptname = basename($filepath);
 $readpath = str_replace($scriptname, "", $filepath);
 $handle = opendir($readpath);
 
-$password = "password"
+$password = "password";
 
 
 //DELETE
-if (isset($_GET['rmfile']) && stripslashes($_REQUEST['pw']) == $password) {
+if (isset($_GET['rmfile']) && (stripslashes($_REQUEST['pw']) == $password)) {
 	unlink($readpath . $_GET['rmfile']);
 }
 
@@ -51,7 +52,7 @@ if ($_FILES['file'] && stripslashes($_REQUEST['pw']) == $password) {
 }
 
 while ($file = readdir($handle)) { 
-
+	//echo $file."<br>";
 	if ($file == "." || $file == ".." || in_array($file, $hide))  continue;
 
 	$key = @filemtime($file);
