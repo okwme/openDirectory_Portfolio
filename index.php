@@ -63,7 +63,7 @@ $(document).ready(function(){
 
 </script>
 			
-			<title>Artist Name</title>
+			<title>Skye Chamberlain</title>
 
 			
 		</head>
