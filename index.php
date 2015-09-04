@@ -71,7 +71,7 @@ $(document).ready(function(){
 		<body >
 
 			
-			<sub class="mail"><a target="_blank" href="mailto:mail@gmail.com">&#x2709;</a> </sub>
+			<sub class="mail"><a target="_blank" href="mailto:chamberlain.skye@gmail.com">&#x2709;</a> </sub>
 <!--<br><br><br><br><br><br><br><br><br>-->
 	  	
 			<?php $baseurl = $_SERVER['PHP_SELF']; ?>
