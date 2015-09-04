@@ -1,5 +1,8 @@
 <?php
 
+error_reporting(2);
+ini_set('display_errors', 'On');
+
 //secret
 
 
@@ -45,15 +48,27 @@ $exts = array("jpg","jpeg","gif","png","bmp","pdf");
 //UPLOAD
 if ($_FILES['file'] && stripslashes($_REQUEST['pw']) == $password) {
 	$ext = strtolower(substr($_FILES['file']['name'], strrpos($_FILES['file']['name'], '.')+1));
+
+//	echo"<pre>";print_r($_FILES);echo"</pre>";
 	if (in_array(strtolower($ext),$exts))
 	{
 		$newname = preg_replace("/[^a-zA-Z0-9]/", "-", $_FILES['file']['name']).".".$ext;
+//		echo $newname;		
 		$success = move_uploaded_file($_FILES['file']['tmp_name'], $newname);
+		if(!$success){
+			print_r("ERROR");
+		}
 	}
 	else
 	{
 		echo "<h1>NOPE</h1>";
 	}
+}else{
+//echo $password;
+//echo "<br>";
+//echo $_REQUEST["pw"];
+//echo"<br>";
+//print_r($_FILES);
 }
 
 while ($file = readdir($handle)) { 
