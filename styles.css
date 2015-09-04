@@ -1,27 +1,86 @@
-	body { 
-		padding: 20px;
+*{
+
+	   -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor:pointer;
+    margin:0;
+    padding:0;
+	}	body { 
 		font-family: "Helvetica" !important;
 		font-size: 14px;
-		}
-		a { color: blue; text-decoration: none; }
-		
-			a:hover { color: red; }
-			a:visited {color: blue;}
-		#header{
-			position:fixed;
-			margin-bottom:160px;
-			top:20px;
-			left:20px;
-		}
-		.titles{
-opacity:0;
-		}
-		table { width: 450px; }
-		#upload {
-			border: 1px solid #DDD;
-			padding: 10px 20px;
-			width: 300px;
-			position: absolute;
-			top: 40px;
-			left: 500px;
-			}
+	}
+	a { color: blue; text-decoration: none; }
+
+	a:hover { color: red; }
+	a:visited {color: blue;}
+	#header{
+		position:fixed;
+		margin-bottom:160px;
+		top:20px;
+		left:20px;
+		display:none;
+	}
+	.titles{
+		opacity:0;
+	}
+	table { width: 450px; }
+	#upload {
+		border: 1px solid #DDD;
+		padding: 10px 20px;
+		width: 300px;
+		position: absolute;
+		top: 40px;
+		left: 500px;
+	}
+.mail{
+	position:fixed;
+	top:10px;
+	line-height:40px;
+	left:10px;
+	font-size:80px;
+	z-index:99999;
+}
+.mail a,.mail a.active, .mail a.visited{
+	color:blue !important;
+}
+
+	.piece{
+		display:none;
+
+	}
+	.piece.visible{
+		display:block;
+		margin:auto;
+	}
+	.pieceHolder{
+		display:table;
+		width:100%;
+		height:100%;
+		position:absolute;
+		top:0;
+		left:0;
+		right:0;
+		bottom:0;
+		text-align:center;
+
+	}
+		.pieceHolderInside{
+			display:table-cell;
+			vertical-align:middle;
+			width:100%;
+			height:100%;
+					text-align:center;
+
+}
+	body, html{
+		height:100%;
+		width:100%;
+	}
+img{
+	max-height:100%;
+	max-width:100%;
+}
