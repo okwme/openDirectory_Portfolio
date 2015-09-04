@@ -95,7 +95,7 @@ $(document).ready(function(){
 				?>
 					<div class="pieceHolder" id="<?=$i;?>">
 						<div class="pieceHolderInside">
-						<img  id="<?echo$order;?>" class="piece <? echo $i == $arsize -1 ? "visible" : "";  ?>"  style="padding:10px;" alt="<?php echo $title; ?>" src="<?php echo $fileURL; ?>">	
+						<img  id="<?echo$order;?>" class="piece <? echo $i == $arsize -1 ? "visible" : "";  ?>"   alt="<?php echo $title; ?>" src="<?php echo $fileURL; ?>">	
 					</div>
 					</div>
 
