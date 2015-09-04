@@ -47,7 +47,8 @@ if ($_FILES['file'] && stripslashes($_REQUEST['pw']) == $password) {
 	$ext = strtolower(substr($_FILES['file']['name'], strrpos($_FILES['file']['name'], '.')+1));
 	if (in_array(strtolower($ext),$exts))
 	{
-		$success = move_uploaded_file($_FILES['file']['tmp_name'], $_FILES['file']['name'].".".$ext);
+		$newname = preg_replace("/[^a-zA-Z0-9]/", "-", $_FILES['file']['name']).".".$ext;
+		$success = move_uploaded_file($_FILES['file']['tmp_name'], $newname);
 	}
 	else
 	{
@@ -99,6 +100,8 @@ function checkForm()
 	if (thisext == ".jpg" || thisext == ".jpeg" || thisext == ".gif" || thisext == ".png" )
 	{
 		return true;
+	}else{
+		alert("nope");
 	}
 
 return false;
@@ -122,17 +125,17 @@ foreach($files as $i=>$file){
 	?>
 		<tr>
 		<td>-</td>
-		<td><a href="./index.php?download=<?php echo $filename; ?>"><?php echo $filename; ?></a></td>
+		<td><a target="blank" href="<?php echo $files[$i]; ?>"><?php echo $filename; ?></a></td>
 	<td><?php echo round(filesize($leadon.$files[$i])/1024); ?>KB</td>
 	<td><?php echo date ("d/m/y", filemtime($leadon.$files[$i]));?></td>
-	<td><a onClick="deleteFile('<?php echo $filename; ?>'); return false;" href="#">Delete</a></td>
+	<td><a onClick="deleteFile('<?php echo $files[$i]; ?>'); return false;" href="#">Delete</a></td>
 	</tr>
 		<?php } ?>
 	</table>
 
 		<div id="upload">
 		<form method="post" onSubmit="return checkForm();" action="<?php echo $_SERVER['PHP_SELF'];?>" enctype="multipart/form-data">
-		<p><input type="text" autocomplete="off" id="pw" name="pw" value="<?php echo stripslashes($_REQUEST['pw']) ?>"></input> password</p>
+		<p><input type="password" autocomplete="off" id="pw" name="pw" value="<?php echo stripslashes($_REQUEST['pw']) ?>"></input> password</p>
 	<p><input type="file" autocomplete="off" id="file" name="file" /></p>
 		<p><input type="submit" value="Upload" /></p>
 		</form>
