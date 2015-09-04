@@ -30,7 +30,8 @@ $scriptname = basename($filepath);
 $readpath = str_replace($scriptname, "", $filepath);
 $handle = opendir($readpath);
 
-$password = "password";
+include '../password.php';
+//echo "'".$password."'";
 
 
 //DELETE
